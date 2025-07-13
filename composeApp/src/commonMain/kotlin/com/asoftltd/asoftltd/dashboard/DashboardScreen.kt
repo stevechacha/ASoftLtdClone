@@ -6,13 +6,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.asoftltd.asoftltd.AdmissionScreen
 import com.asoftltd.asoftltd.bottomNav.StandardScaffold
-import com.asoftltd.asoftltd.screens.AcademicsScreen
-import com.asoftltd.asoftltd.screens.AdmissionScreen
-import com.asoftltd.asoftltd.screens.FinanceScreen
-import com.asoftltd.asoftltd.screens.HomeScreen
-import com.asoftltd.asoftltd.screens.MoreScreen
-import com.asoftltd.asoftltd.utils.Destination
+import com.asoftltd.asoftltd.finance.FinanceScreen
+import com.asoftltd.asoftltd.Destination
+import com.asoftltd.asoftltd.home.HomeScreen
+import com.asoftltd.asoftltd.more.MoreScreen
+import com.asoftltd.asoftltd.academics.AcademicsScreen
 
 @Composable
 fun DashboardScreen() {

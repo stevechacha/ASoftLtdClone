@@ -10,25 +10,49 @@ androidx-core = "1.16.0"
 androidx-espresso = "3.6.1"
 androidx-lifecycle = "2.9.1"
 androidx-testExt = "1.2.1"
-composeMultiplatform = "1.8.2"
-junit = "4.13.2"
-kotlin = "2.2.0"
-
+assertK = "0.28.1"
+authKt = "3.2.0"
+cache4k = "0.13.0"
+coil3 = "3.0.4"
 coil3-io = "3.0.0-alpha01"
+coilNetwork = "3.0.0-alpha08"
+composeMultiplatform = "1.8.2"
+constraintlayoutVersion = "2.2.0"
+coreKtxVersion = "1.6.1"
 dataStoreVersion = "1.1.2"
+foundationAndroidVersion = "1.7.7"
 image-loader = "1.2.8"
-ktor = "3.0.3"
+junit = "4.13.2"
+koin-compose-version = "1.0.4"
+koin-version = "4.0.0"
 koinComposeMultiplatform = "4.0.0"
 koinKspVersion = "1.2.2"
-koin-version = "4.0.0"
-koin-compose-version = "1.0.4"
-kotlinxCoroutines = "1.10.1"
-kotlinx-serialization-version = "1.9.0"
+kotest = "5.8.0"
+kotlin = "2.2.0"
 kotlin-datetime-version = "0.6.1"
-ksp = "2.1.10-1.0.31"
 kotlinSerialization = "1.7.3"
-
+kotlinx-serialization-version = "1.9.0"
+kotlinxCoroutines = "1.10.1"
+ksp = "2.2.0-2.0.2"
+ktor = "3.2.1"
+logback = "1.5.16"
+material3AndroidVersion = "1.3.2"
+mockative = "2.2.2"
+mockk = "1.8.13.kotlin13"
+moko-geo-version = "0.6.0"
 navigationCompose = "2.8.0-alpha13"
+paging-compose-version = "3.3.0-alpha02-0.5.1"
+room = "2.7.0-alpha13"
+sqlite = "2.5.0-alpha13"
+sqldelight = "2.0.2"
+sqliter = "1.3.0"
+startupRuntime = "1.2.0"
+superbase-bom = "3.1.4"
+supabaseKt = "3.2.0"
+turbine = "1.0.0"
+uiAndroid = "1.7.7"
+
+
 
 
 
@@ -46,6 +70,8 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
+
+cache4k = { module = "io.github.reactivecircus.cache4k:cache4k", version.ref = "cache4k" }
 coil3 = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3-io" }
 coil3-network = { module = "io.coil-kt.coil3:coil-network", version.ref = "coil3-io" }
 coil3-video = { module = "io.coil-kt.coil3:coil-video", version.ref = "coil3-io" }
@@ -57,6 +83,7 @@ compose-image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref
 compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref= "navigationCompose"}
 datastore = { module = "androidx.datastore:datastore", version.ref = "dataStoreVersion" }
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStoreVersion" }
+
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-core-iosarm64 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-iossimulatorarm64", version.ref = "kotlinxCoroutines" }
@@ -75,7 +102,6 @@ koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "
 koin-ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 koin-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinKspVersion" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin-version" }
-
 
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
@@ -97,6 +123,53 @@ ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "kto
 ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
 ktor-server-tests = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
 
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+
+moko-geo = { module = "dev.icerock.moko:geo", version.ref = "moko-geo-version"}
+moko-geo-compose = { module = "dev.icerock.moko:geo-compose", version.ref = "moko-geo-version"}
+
+
+sqliter = { module = "co.touchlab:sqliter", version.ref = "sqliter" }
+android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
+
+
+#Tests Lib Dependencies
+mockative = { module = "io.mockative:mockative", version.ref = "mockative" }
+assertK = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertK" }
+ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+kotest-framework-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+turbine-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+mockk-io = { module = "io.mockk:mockk", version.ref = "mockk" }
+
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+room-runtime-android = { module = "androidx.room:room-runtime-android", version.ref = "room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+
+storage-kt = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "authKt" }
+superbase-bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "superbase-bom" }
+supabase-postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+supabase-realtime-kt = { module = "io.github.jan-tennert.supabase:realtime-kt" }
+superbase-auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt" }
+supabase-functions-kt = { module = "io.github.jan-tennert.supabase:functions-kt"}
+supabase-kt = { module = "io.github.jan-tennert.supabase:supabase-kt", version.ref = "supabaseKt" }
+compose-auth = { module = "io.github.jan-tennert.supabase:compose-auth", version.ref = "authKt" }
+
+paging-compose= { module = "app.cash.paging:paging-compose-common", version.ref = "paging-compose-version" }
+paging-common= { module = "app.cash.paging:paging-common", version.ref = "paging-compose-version" }
+androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroidVersion" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3AndroidVersion" }
+test-core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
+
 [bundles]
 coil = [
     "coil3",
@@ -105,20 +178,47 @@ coil = [
     "coil3-svg",
     "coil3-gif"
 ]
+ktor-common = [
+    "ktor-client-core",
+    "ktor-client-cio",
+    "ktor-client-json",
+    "ktor-client-logging",
+    "ktor-client-serialization",
+    "ktor-client-content-negotiation",
+]
 koin = [
     "koin-compose",
     "koin-compose-viewmodel",
     "koin-compose-viewmodel-navigation"
 ]
 
+supabase = [
+    "supabase-kt",
+    "supabase-postgrest-kt",
+    "supabase-realtime-kt",
+    "superbase-auth-kt",
+    "storage-kt",
+    "compose-auth",
+    "supabase-functions-kt"
+]
+
+
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+room = { id = "androidx.room", version.ref = "room" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+
+
+module-composeMultiplatform = { id = "com.asoftltd.asoftltd.composeMultiplatform", version = "unspecified" }
+module-kotlinMultiplatform = { id = "com.asoftltd.asoftltd.kotlinMultiplatform", version = "unspecified" }
+module-androidApp = { id = "com.asoftltd.asoftltd.androidApp", version = "unspecified" }

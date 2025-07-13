@@ -2,11 +2,10 @@ package com.asoftltd.asoftltd.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
-import com.asoftltd.asoftltd.utils.Destination
+import com.asoftltd.asoftltd.Destination
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
 import com.asoftltd.asoftltd.dashboard.DashboardScreen
-import com.asoftltd.asoftltd.utils.NavigationGraph
+import com.asoftltd.asoftltd.NavigationGraph
 
 
 fun NavGraphBuilder.appNavigation(

@@ -3,10 +3,10 @@ package com.asoftltd.asoftltd.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.asoftltd.asoftltd.utils.NavigationGraph
-import com.asoftltd.asoftltd.utils.onGoBack
-import com.asoftltd.asoftltd.utils.onNavigate
-import com.asoftltd.asoftltd.utils.onNavigateBack
+import com.asoftltd.asoftltd.NavigationGraph
+import com.asoftltd.asoftltd.onGoBack
+import com.asoftltd.asoftltd.onNavigate
+import com.asoftltd.asoftltd.onNavigateBack
 
 @Composable
 fun RootGraph(navHostController: NavHostController){
