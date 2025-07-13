@@ -23,6 +23,7 @@ kotlin {
             commonMain.dependencies {
                 api(libs.compose.image.loader)
                 implementation(projects.core.domain)
+                implementation(projects.core.common)
             }
 
             iosMain.dependencies {

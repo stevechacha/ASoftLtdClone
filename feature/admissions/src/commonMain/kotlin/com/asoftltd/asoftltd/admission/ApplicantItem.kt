@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 import com.asoftltd.asoftltd.domain.model.Applicant
 import com.asoftltd.asoftltd.domain.model.PaymentStatus
 import com.asoftltd.asoftltd.getCountryCodeFromName
@@ -40,13 +41,9 @@ import io.ktor.util.toLowerCasePreservingASCIIRules
 @Composable
 fun ApplicantItem(applicant: Applicant) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
+        modifier = Modifier.fillMaxWidth().padding(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Initials circle
-
         if (applicant.profileImage != null) {
             AsyncImage(
                 model = applicant.profileImage,
@@ -54,13 +51,12 @@ fun ApplicantItem(applicant: Applicant) {
                 modifier = Modifier
                     .size(40.dp)
                     .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary)
                     .wrapContentSize(Alignment.Center)
             )
         } else {
             Text(
                 text = applicant.name.take(1).uppercase(),
-                color = Color.White,
+                color = AsTheme.colors.onBackground,
                 modifier = Modifier
                     .size(40.dp)
                     .background(randomColor(), CircleShape)
@@ -74,7 +70,11 @@ fun ApplicantItem(applicant: Applicant) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(applicant.name, color = Color.White, fontWeight = FontWeight.SemiBold)
+                Text(
+                    text = applicant.name,
+                    color = AsTheme.colors.onBackground,
+                    fontWeight = FontWeight.SemiBold
+                )
                 Spacer(Modifier.width(8.dp))
                 Text(
                     applicant.paymentStatus.displayName,

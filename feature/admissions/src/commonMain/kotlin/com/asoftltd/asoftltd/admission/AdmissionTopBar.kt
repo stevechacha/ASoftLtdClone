@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.asoftltd.asoftltd.designsystem.Res
 import com.asoftltd.asoftltd.designsystem.*
+import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -52,7 +53,7 @@ fun AdmissionTopBars(
 
         Text(
             text = "Admission",
-            color = Color.White,
+            color = AsTheme.colors.onBackground,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
         )

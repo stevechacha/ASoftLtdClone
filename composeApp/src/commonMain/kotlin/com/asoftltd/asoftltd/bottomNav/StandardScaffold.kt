@@ -14,8 +14,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
+import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 
-
+val bottomColor = Color(0xFF1A1D25)
 @Composable
 fun StandardScaffold(
     navController: NavController,
@@ -33,7 +34,7 @@ fun StandardScaffold(
         bottomBar = {
             if (showBottomBar) {
                 NavigationBar(
-                    containerColor = Color(0xFF1A1D25),
+                    containerColor = AsTheme.colors.background,
                 ) {
                     bottomNavigationRoutes.forEachIndexed { i, bottomNavItem ->
                         val isSelected =

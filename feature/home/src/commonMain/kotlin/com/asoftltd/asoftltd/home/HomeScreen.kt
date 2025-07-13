@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,9 +24,9 @@ fun HomeScreen() {
     ) { padding ->
         Column(
             modifier = Modifier
+                .background(AsTheme.colors.background)
                 .padding(padding)
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
         ) {
             Text(
                 text = "Home Screen",

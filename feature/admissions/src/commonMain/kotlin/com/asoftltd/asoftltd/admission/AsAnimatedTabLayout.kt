@@ -33,12 +33,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 
 @Composable
 fun <E : Enum<E>>  AsAnimatedTabLayout(
     tabItems: List<E>,
     modifier: Modifier = Modifier,
-    selectedTabColor: Color = MaterialTheme.colorScheme.onBackground,
+    selectedTabColor: Color = AsTheme.colors.onBackground,
     containerColor: Color = Color.Transparent,
     content: @Composable (E) -> Unit
 ) {

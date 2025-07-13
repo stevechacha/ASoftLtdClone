@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 
 @Composable
 @Throws(IllegalArgumentException::class)
@@ -23,8 +24,8 @@ fun RowScope.StandardBottomNavItem(
     contentDescription: String? = null,
     selected: Boolean = false,
     alertCount: Int? = null,
-    selectedColor: Color = MaterialTheme.colorScheme.onBackground,
-    unselectedColor: Color = Color.Gray,
+    selectedColor: Color = AsTheme.colors.onBackground,
+    unselectedColor: Color = AsTheme.colors.onBackground.copy(alpha = 0.5f),
     enabled: Boolean = true,
     onClick: () -> Unit
 ) {

@@ -40,6 +40,8 @@ import com.asoftltd.asoftltd.admission.AsAnimatedTabLayout
 import com.asoftltd.asoftltd.admission.StatCard
 import com.asoftltd.asoftltd.designsystem.Res
 import com.asoftltd.asoftltd.designsystem.*
+import com.asoftltd.asoftltd.designsystem.components.AsBackground
+import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 import com.asoftltd.asoftltd.domain.model.AdmissionStats
 import com.asoftltd.asoftltd.domain.model.Applicant
 import com.asoftltd.asoftltd.domain.model.sampleApplicants
@@ -105,55 +107,57 @@ fun StatsGrid(stats: AdmissionStats) {
         "Early Admission"
     )
 
-    var selectedTabIndex by remember { mutableStateOf(0) }
+    AsBackground {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            stickyHeader {
+                AdmissionTopBars(
+                    onSearchClick =  {},
+                    onProfileClick = {},
+                    hasNotification = true
+                )
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(12.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        stickyHeader {
-            AdmissionTopBars(
-                onSearchClick =  {},
-                onProfileClick = {},
-                hasNotification = true
-            )
+            }
 
-        }
+            // Stats cards
+            items(statsData) { stat ->
+                StatCard(stat)
+            }
 
-        // Stats cards
-        items(statsData) { stat ->
-            StatCard(stat)
-        }
-
-        // Tabbed content section
-        item(span = { GridItemSpan(2) }) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFF1A1D25)),
-                elevation = CardDefaults.cardElevation(4.dp)
-            ) {
-                AsAnimatedTabLayout(
-                    tabItems = TabSelectType.entries,
+            // Tabbed content section
+            item(span = { GridItemSpan(2) }) {
+                Card(
                     modifier = Modifier.fillMaxWidth(),
-                ) { type ->
-                    when (type) {
-                        TabSelectType.APPLICANTS -> {
-                            ApplicantsList(sampleApplicants)
-                        }
-                        TabSelectType.OPPORTUNITIES -> {
-                            OpportunitiesList(
-                                opportunities = sampleOpportunities
-                            )
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = AsTheme.colors.secondary),
+                    elevation = CardDefaults.cardElevation(4.dp)
+                ) {
+                    AsAnimatedTabLayout(
+                        tabItems = TabSelectType.entries,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) { type ->
+                        when (type) {
+                            TabSelectType.APPLICANTS -> {
+                                ApplicantsList(sampleApplicants)
+                            }
+                            TabSelectType.OPPORTUNITIES -> {
+                                OpportunitiesList(
+                                    opportunities = sampleOpportunities
+                                )
+                            }
                         }
                     }
                 }
-            }
 
+            }
         }
     }
+
+
 }
 
 @Composable
@@ -246,23 +250,6 @@ fun getCountryCodeFromName(name: String): String {
 }
 
 
-data class Applicants(
-    val name: String,
-    val initials: String,
-    val form: String,
-    val paymentStatus: String,
-    val status: String,
-    val statusColor: Color
-)
-
-//val sampleApplicants = listOf(
-//    Applicant("Emmanuel Ndaki", "E", "I", "Paid", "Rejected", Color.Red),
-//    Applicant("Edwin Mgonga", "E", "II", "Partially Paid", "Admitted", Color.Green),
-//    Applicant("Pendo Mwakalindila", "P", "I", "Overpaid", "Processed", Color.Blue),
-//    Applicant("Ibrahim Mwinyi", "I", "I", "Unpaid", "Unprocessed", Color.Yellow),
-//    Applicant("John Sebastian", "J", "III", "Paid", "Admitted", Color.Green),
-//    Applicant("Salha Abrahamani", "S", "I", "Paid", "Admitted", Color.Green),
-//)
 
 class Country(
     val nameCode: String,

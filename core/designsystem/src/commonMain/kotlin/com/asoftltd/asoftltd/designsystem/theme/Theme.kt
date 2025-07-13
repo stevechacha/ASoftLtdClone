@@ -5,43 +5,55 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.staticCompositionLocalOf
+import com.asoftltd.asoftltd.setInsetsController
 
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF1A1D25),
-    onPrimary = Color.White,
-    secondary = Color(0xFF2C2F38),
-    onSecondary = Color.White,
-    background = Color(0xFF10131A),
-    onBackground = Color.White,
-    surface = Color(0xFF10131A),
-    onSurface = Color.White
-)
+private val localColorScheme = staticCompositionLocalOf { LightColors }
+private val localTypography = staticCompositionLocalOf { AppTypography() }
 
-private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF1A1D25),
-    onPrimary = Color.White,
-    secondary = Color(0xFF2C2F38),
-    onSecondary = Color.White,
-    background = Color(0xFF10131A),
-    onBackground = Color.White,
-    surface = Color(0xFF10131A),
-)
+
 
 @Composable
 fun AsoftTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    themeMode: ThemeMode = ThemeMode.System,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = remember(darkTheme) {
-        if (darkTheme) DarkColorScheme else LightColorScheme
+
+    val colors = when (themeMode) {
+        ThemeMode.Light -> LightColors
+        ThemeMode.Dark -> DarkColors
+        ThemeMode.System -> if (darkTheme) DarkColors else LightColors
     }
-//    setInsetsController(darkTheme)
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = AsTypography,
-        content = content
-    )
+
+    val typography = remember { AppTypography() }
+
+
+    CompositionLocalProvider(
+        localColorScheme provides colors,
+        localTypography provides typography,
+    ) {
+        setInsetsController(darkTheme)
+        content()
+    }
 }
+
+object AsTheme {
+    val colors: AsoftColor
+        @Composable
+        get() = localColorScheme.current
+
+    val typography: AppTypography
+        @Composable
+        get() = localTypography.current
+}
+
+enum class ThemeMode {
+    Light,
+    Dark,
+    System
+}
+
