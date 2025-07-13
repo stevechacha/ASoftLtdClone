@@ -50,8 +50,17 @@ import kotlin.text.get
 
 @Composable
 fun AdmissionScreen() {
-    StatsGrid(
-        stats = AdmissionStats(
+    AsBackground(
+        topAppBar = {
+            AdmissionTopBars(
+                onSearchClick = {},
+                onProfileClick = {},
+                hasNotification = true,
+                modifier = Modifier.padding(top = getStatusBarPadding().calculateTopPadding())
+            )
+        }
+    ) {
+        val stats = AdmissionStats(
             totalApplicants = 1145,
             admitted = 598,
             processed = 133,
@@ -63,67 +72,52 @@ fun AdmissionScreen() {
                 "rejected" to 65.0
             )
         )
-    )
-}
 
-@Composable
-fun StatsGrid(stats: AdmissionStats) {
-    val statsData = listOf(
-        StatData(
-            value = stats.totalApplicants.toString(),
-            label = "Total Applicants",
-            iconRes = Res.drawable.license,
-            growth = stats.trends["total"] ?: 0.0,
-            growthColor = Color(0xFF4CAF50)
-        ),
-        StatData(
-            value = stats.admitted.toString(),
-            label = "Admitted",
-            iconRes = Res.drawable.user_check,
-            growth = stats.trends["admitted"] ?: 0.0,
-            growthColor = Color(0xFF2196F3)
-        ),
-        StatData(
-            value = stats.processed.toString(),
-            label = "Processed",
-            iconRes = Res.drawable.user_story,
-            growth = stats.trends["processed"] ?: 0.0,
-            growthColor = Color(0xFFFF9800)
-        ),
-        StatData(
-            value = stats.rejected.toString(),
-            label = "Rejected",
-            iconRes = Res.drawable.user_remove,
-            growth = stats.trends["rejected"] ?: 0.0,
-            growthColor = Color(0xFFF44336)
+        val statsData = listOf(
+            StatData(
+                value = stats.totalApplicants.toString(),
+                label = "Total Applicants",
+                iconRes = Res.drawable.license,
+                growth = stats.trends["total"] ?: 0.0,
+                growthColor = Color(0xFF4CAF50)
+            ),
+            StatData(
+                value = stats.admitted.toString(),
+                label = "Admitted",
+                iconRes = Res.drawable.user_check,
+                growth = stats.trends["admitted"] ?: 0.0,
+                growthColor = Color(0xFF2196F3)
+            ),
+            StatData(
+                value = stats.processed.toString(),
+                label = "Processed",
+                iconRes = Res.drawable.user_story,
+                growth = stats.trends["processed"] ?: 0.0,
+                growthColor = Color(0xFFFF9800)
+            ),
+            StatData(
+                value = stats.rejected.toString(),
+                label = "Rejected",
+                iconRes = Res.drawable.user_remove,
+                growth = stats.trends["rejected"] ?: 0.0,
+                growthColor = Color(0xFFF44336)
+            )
         )
-    )
 
-    // Sample opportunities data
-    val sampleOpportunities = listOf(
-        "Scholarship Program",
-        "Sports Recruitment",
-        "Academic Exchange",
-        "Early Admission"
-    )
+        val sampleOpportunities = listOf(
+            "Scholarship Program",
+            "Sports Recruitment",
+            "Academic Exchange",
+            "Early Admission"
+        )
 
-    AsBackground {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(12.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            stickyHeader {
-                AdmissionTopBars(
-                    onSearchClick =  {},
-                    onProfileClick = {},
-                    hasNotification = true
-                )
 
-            }
-
-            // Stats cards
             items(statsData) { stat ->
                 StatCard(stat)
             }
@@ -144,6 +138,7 @@ fun StatsGrid(stats: AdmissionStats) {
                             TabSelectType.APPLICANTS -> {
                                 ApplicantsList(sampleApplicants)
                             }
+
                             TabSelectType.OPPORTUNITIES -> {
                                 OpportunitiesList(
                                     opportunities = sampleOpportunities
@@ -157,13 +152,16 @@ fun StatsGrid(stats: AdmissionStats) {
         }
     }
 
-
 }
 
+
 @Composable
-fun ApplicantsList(applicants: List<Applicant>) {
+fun ApplicantsList(
+    applicants: List<Applicant>,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(
-        modifier = Modifier.heightIn(max = 400.dp),
+        modifier = modifier.heightIn(max = 400.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         itemsIndexed(applicants) { index, applicant ->
@@ -180,9 +178,12 @@ fun ApplicantsList(applicants: List<Applicant>) {
 }
 
 @Composable
-fun OpportunitiesList(opportunities: List<String>) {
+fun OpportunitiesList(
+    opportunities: List<String>,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(
-        modifier = Modifier.heightIn(max = 400.dp),
+        modifier = modifier.heightIn(max = 400.dp),
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {

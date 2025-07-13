@@ -1,6 +1,7 @@
 package com.asoftltd.asoftltd.admission
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -34,12 +35,13 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun AdmissionTopBars(
+    modifier: Modifier = Modifier,
     onSearchClick: () -> Unit,
     onProfileClick: () -> Unit,
     hasNotification: Boolean = true
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(12.dp),
+        modifier = modifier.fillMaxWidth().padding(horizontal = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
     ) {
@@ -73,15 +75,25 @@ fun AdmissionTopBars(
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        ProfileWithBadge()
+        ProfileWithBadge(
+            modifier = Modifier.size(64.dp),
+            onProfileClick = onProfileClick,
+            hasNotification = hasNotification
+        )
 
     }
 }
 
 @Composable
-fun ProfileWithBadge() {
+fun ProfileWithBadge(
+    modifier: Modifier = Modifier,
+    onProfileClick: () -> Unit = {},
+    hasNotification: Boolean = true
+) {
     Box(
         modifier = Modifier
+            .clip(CircleShape)
+            .clickable(onClick = onProfileClick)
             .size(64.dp)
             .padding(8.dp)
     ) {
