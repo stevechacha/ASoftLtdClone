@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.module.kotlinMultiplatform)
     alias(libs.plugins.module.composeMultiplatform)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+
 }
 
 kotlin {
@@ -15,12 +18,19 @@ kotlin {
             isStatic = true
         }
     }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     sourceSets {
         androidMain.dependencies {
 
         }
         commonMain.dependencies {
-
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.sqlite.bundled)
         }
 
         iosMain.dependencies {

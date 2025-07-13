@@ -41,7 +41,7 @@ fun AsoftTheme(
 //    setInsetsController(darkTheme)
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = AsoftTypography,
+        typography = AsTypography,
         content = content
     )
 }
