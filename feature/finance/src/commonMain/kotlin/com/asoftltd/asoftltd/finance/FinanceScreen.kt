@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 import com.asoftltd.asoftltd.getStatusBarPadding
 
@@ -22,8 +23,24 @@ fun FinanceScreen(){
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Finance Screen",
-            modifier = Modifier.fillMaxSize()
+            text = "Finance",
+            style = AsTheme.typography.headlineLarge,
+            color = AsTheme.colors.onBackground,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+
+        Text(
+            text = "This is the Finance screen.",
+            style = AsTheme.typography.headlineLarge,
+            color = AsTheme.colors.onBackground,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+
+        Text(
+            text = "This is the Finance screen.",
+            style = AsTheme.typography.headlineLarge,
+            color = AsTheme.colors.onBackground,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
 
