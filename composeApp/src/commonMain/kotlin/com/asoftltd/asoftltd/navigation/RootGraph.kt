@@ -14,6 +14,11 @@ fun RootGraph(navHostController: NavHostController){
         navController = navHostController,
         startDestination = NavigationGraph.App
     ) {
+        authNavigation(
+            onNavigate = navHostController::onNavigate,
+            onNavigateBack = navHostController::onNavigateBack,
+            onGoBack = navHostController::onGoBack,
+        )
         appNavigation(
             onNavigate = navHostController::onNavigate,
             onNavigateBack = navHostController::onNavigateBack,

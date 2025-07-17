@@ -14,6 +14,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.asoftltd.asoftltd.designsystem.theme.AsTheme
 
 val bottomColor = Color(0xFF1A1D25)
@@ -49,7 +50,8 @@ fun StandardScaffold(
                             if (currentDestination !=null) {
                                 navController.navigate(bottomNavItem.route) {
                                     launchSingleTop = false
-//                                    popUpTo(navController.graph) { inclusive = false }
+                                    restoreState = true
+                                    popUpTo(navController.graph.findStartDestination())
                                 }
                             }
 
